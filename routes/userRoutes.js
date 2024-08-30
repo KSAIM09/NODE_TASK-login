@@ -26,7 +26,7 @@ router.post("/signup", async (req, res) => {
 });
 
 router.get("/signin", async (req, res) => {
-    res.render("signinuser", {
+    res.render("signin", {
         title: "Expense Tracker | Signin",
         user: req.user,
     });
@@ -40,10 +40,14 @@ router.get("/signin", async (req, res) => {
 //     }
 // });
 
+router.get('/success', (req, res) => {
+    res.render('success')
+})
+
 router.post(
     "/signin",
     passport.authenticate("local", {
-        successRedirect: "/user/profile",
+        successRedirect: "/user/success",
         failureRedirect: "/user/signin",
     }),
     (req, res) => {}
